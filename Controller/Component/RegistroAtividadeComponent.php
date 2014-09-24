@@ -21,7 +21,7 @@ class RegistroAtividadeComponent extends Component
      */
     public function startup(Controller $controller)
     {
-
+        $this->registrar($controller);
     }
 
     /**
@@ -33,6 +33,21 @@ class RegistroAtividadeComponent extends Component
      */
     public function registrar(Controller $controller)
     {
+        $atividade = array(
+            'navegador' => $controller->request->header('User-Agent'),
+            'referer' => $controller->request->referer(),
+            'ip' => $controller->request->clientIp(),
+            'url' => $controller->request->here(),
+            'controller' => $controller->name,
+            'action' => $controller->request->params['action'],
+            'method' => $controller->request->method(),
+            'usuario_id' => null
+        );
 
+        if ( isset($controller->Auth) ) {
+            $atividade['usuario_id'] = $controller->Auth->user('id');
+        }
+
+        ClassRegistry::init('RegistroAtividade.RegistroAtividade', 'Model')->save($atividade);
     }
 }

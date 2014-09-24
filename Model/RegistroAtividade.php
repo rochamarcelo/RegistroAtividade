@@ -4,13 +4,13 @@
  *
  * @package Model
  */
-App::uses('AppModel', 'Model');
+App::uses('RegistroAtividadeAppModel', 'RegistroAtividade.Model');
 /**
  * Model para registro de atividade
  *
  * @package Model
  */
-class RegistroAtividade extends AppModel
+class RegistroAtividade extends RegistroAtividadeAppModel
 {
-
+    public $useTable = 'registros_atividades';
 }
