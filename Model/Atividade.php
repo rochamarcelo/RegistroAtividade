@@ -1,6 +1,6 @@
 <?php
 /**
- * Este arquivo contem o model RegistroAtividade
+ * Este arquivo contem o model Atividade
  *
  * @package Model
  */
@@ -10,7 +10,7 @@ App::uses('RegistroAtividadeAppModel', 'RegistroAtividade.Model');
  *
  * @package Model
  */
-class RegistroAtividade extends RegistroAtividadeAppModel
+class Atividade extends RegistroAtividadeAppModel
 {
     public $useTable = 'registros_atividades';
 }

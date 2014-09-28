@@ -47,7 +47,6 @@ class RegistroAtividadeComponent extends Component
         if ( isset($controller->Auth) ) {
             $atividade['usuario_id'] = $controller->Auth->user('id');
         }
-
-        ClassRegistry::init('RegistroAtividade.RegistroAtividade', 'Model')->save($atividade);
+        ClassRegistry::init('RegistroAtividade.Atividade', 'Model')->save($atividade);
     }
 }
