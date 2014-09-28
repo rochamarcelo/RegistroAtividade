@@ -1,12 +1,12 @@
 <?php
-class CreateRegistrosAtividades extends CakeMigration
+class CreateAtividades extends CakeMigration
 {
     /**
      * Migration description
      *
      * @var string
      */
-    public $description = 'Create table registros_atividades';
+    public $description = 'Create table atividades';
 
     /**
      * Actions to be performed
@@ -16,7 +16,7 @@ class CreateRegistrosAtividades extends CakeMigration
     public $migration = array(
         'up' => array(
             'create_table' => array(
-                'registros_atividades' => array(
+                'atividades' => array(
                     'id' => array(
                         'type' => 'integer',
                         'null' => false,
@@ -78,7 +78,7 @@ class CreateRegistrosAtividades extends CakeMigration
         ),
         'down' => array(
             'drop_table' => array(
-                'registros_atividades'
+                'atividades'
             ),
         ),
     );
