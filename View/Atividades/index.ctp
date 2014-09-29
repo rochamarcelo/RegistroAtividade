@@ -1,4 +1,4 @@
-<div class="atividades">
+<div class="atividades index">
 	<h2><?php echo __('Atividades'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
@@ -10,8 +10,8 @@
 			<th><?php echo $this->Paginator->sort('controller'); ?></th>
 			<th><?php echo $this->Paginator->sort('action'); ?></th>
 			<th><?php echo $this->Paginator->sort('method'); ?></th>
-			<th><?php echo $this->Paginator->sort('usuario_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('usuario_nome'); ?></th>
+			<th><?php echo $this->Paginator->sort('created'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -24,7 +24,7 @@
 		<td><?php echo h($atividade['Atividade']['controller']); ?>&nbsp;</td>
 		<td><?php echo h($atividade['Atividade']['action']); ?>&nbsp;</td>
 		<td><?php echo h($atividade['Atividade']['method']); ?>&nbsp;</td>
-		<td><?php echo h($atividade['Atividade']['usuario_id']); ?>&nbsp;</td>
+		<td><?php echo h($atividade['Atividade']['usuario_nome']); ?>&nbsp;</td>
 		<td><?php echo h($atividade['Atividade']['created']); ?>&nbsp;</td>
 	</tr>
 <?php } ?>

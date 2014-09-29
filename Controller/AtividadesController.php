@@ -51,6 +51,7 @@ class AtividadesController extends RegistroAtividadeAppController
      */
     public function index()
     {
+        $this->Components->unload('Paginator');
         $this->set('atividades', $this->paginate());
     }
 }
