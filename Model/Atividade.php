@@ -12,5 +12,16 @@ App::uses('RegistroAtividadeAppModel', 'RegistroAtividade.Model');
  */
 class Atividade extends RegistroAtividadeAppModel
 {
-    public $useTable = 'registros_atividades';
+    public $useTable = 'atividades';
+
+    /**
+     * Habilita o virtual field total
+     *
+     * @access public
+     * @return null
+     */
+    public function habilitarVirtualFieldTotal()
+    {
+        $this->virtualFields['total'] = 'COUNT(' . $this->alias . '.id)';
+    }
 }
