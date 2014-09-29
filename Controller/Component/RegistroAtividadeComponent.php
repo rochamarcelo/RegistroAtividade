@@ -41,11 +41,13 @@ class RegistroAtividadeComponent extends Component
             'controller' => $controller->name,
             'action' => $controller->request->params['action'],
             'method' => $controller->request->method(),
-            'usuario_id' => null
+            'usuario_id' => null,
+            'usuario_nome' => 'Visitante'
         );
 
         if ( isset($controller->Auth) ) {
             $atividade['usuario_id'] = $controller->Auth->user('id');
+            $atividade['usuario_nome'] = $controller->Auth->user('nome');
         }
         ClassRegistry::init('RegistroAtividade.Atividade', 'Model')->save($atividade);
     }
