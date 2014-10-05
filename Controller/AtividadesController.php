@@ -13,7 +13,6 @@ App::uses('AppController', 'Controller');
 class AtividadesController extends RegistroAtividadeAppController
 {
     public $components = array(
-        'RegistroAtividade.RegistroAtividade',
         'Paginator'
     );
 

@@ -13,6 +13,8 @@ App::uses('AppController', 'Controller');
 class RegistroAtividadeAppController extends AppController
 {
     public $components = array(
-        'RegistroAtividade.RegistroAtividade'
+        'RegistroAtividade.RegistroAtividade' => array(
+            'habilitado' => false
+        )
     );
 }

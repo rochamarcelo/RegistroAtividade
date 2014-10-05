@@ -11,6 +11,32 @@
  */
 class RegistroAtividadeComponent extends Component
 {
+    private $_habilitado = true;
+
+    private $_model;
+
+    private $_pluginsPermitidos = array();
+    /**
+     * Constructor
+     *
+     * @param ComponentCollection $collection A ComponentCollection this component can use to lazy load its components
+     * @param array               $settings   Array of configuration settings.
+     *
+     * @return void
+     */
+    public function __construct(ComponentCollection $collection, $settings = array())
+    {
+        parent::__construct($collection, $settings);
+
+        if ( isset($settings['habilitado']) ) {
+            $this->_habilitado = (boolean)$settings['habilitado'];
+        }
+
+        if ( isset($settings['pluginsPermitidos']) ) {
+            $this->_pluginsPermitidos = $settings['pluginsPermitidos'];
+        }
+    }
+
     /**
      * Callback executado depois de Controller::beforeFilter() e antes da ação do controller
      *
@@ -21,6 +47,15 @@ class RegistroAtividadeComponent extends Component
      */
     public function startup(Controller $controller)
     {
+        $this->_model = ClassRegistry::init('RegistroAtividade.Atividade', 'Model');
+        if ( !$this->_habilitado ) {
+            return;
+        }
+        $plugin = $controller->request->params['plugin'];
+        if ( $plugin && !in_array($plugin, $this->_pluginsPermitidos, true) ) {
+            return;
+        }
+
         $this->registrar($controller);
     }
 
@@ -49,6 +84,6 @@ class RegistroAtividadeComponent extends Component
             $atividade['usuario_id'] = $controller->Auth->user('id');
             $atividade['usuario_nome'] = $controller->Auth->user('nome');
         }
-        ClassRegistry::init('RegistroAtividade.Atividade', 'Model')->save($atividade);
+        $this->_model->save($atividade);
     }
 }
